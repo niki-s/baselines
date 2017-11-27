@@ -44,6 +44,7 @@ def traj_segment_generator(pi, env, horizon, stochastic):
         i = t % horizon
         obs[i] = ob
         vpreds[i] = vpred
+        print ("---", new, news, i)
         news[i] = new
         acs[i] = ac
         prevacs[i] = prevac
@@ -127,6 +128,7 @@ def learn(env, policy_func, *,
 
     U.initialize()
     adam.sync()
+    saver = tf.train.Saver()
 
     # Prepare for rollouts
     # ----------------------------------------
